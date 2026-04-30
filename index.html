@@ -565,4 +565,1257 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: inline-flex; align-items: center; gap: 6px;
   font-size: .78rem; font-weight: 700;
   color: var(--sky); margin-top: 16px;
-  letter-spacing: .04em; text-transform: uppercase
+  letter-spacing: .04em; text-transform: uppercase;
+  opacity: 0; transform: translateX(-6px);
+  transition: all var(--t);
+}
+.service-card:hover .sc-link { opacity: 1; transform: translateX(0); }
+
+/* ═══ GALLERY ═══ */
+.gallery-mosaic {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 180px;
+  gap: 12px;
+}
+.gm-item { border-radius: 16px; overflow: hidden; position: relative; cursor: pointer; }
+.gm-item:nth-child(1) { grid-column: 1/6; grid-row: 1/3; }
+.gm-item:nth-child(2) { grid-column: 6/9; grid-row: 1/2; }
+.gm-item:nth-child(3) { grid-column: 9/13; grid-row: 1/2; }
+.gm-item:nth-child(4) { grid-column: 6/10; grid-row: 2/3; }
+.gm-item:nth-child(5) { grid-column: 10/13; grid-row: 2/3; }
+.gm-item:nth-child(6) { grid-column: 1/5; grid-row: 3/4; }
+.gm-item:nth-child(7) { grid-column: 5/9; grid-row: 3/4; }
+.gm-item:nth-child(8) { grid-column: 9/13; grid-row: 3/4; }
+
+.gm-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .7s var(--ease-out);
+}
+.gm-item:hover img { transform: scale(1.07); }
+.gm-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(10,22,40,.85) 0%, transparent 100%);
+  padding: 28px 16px 14px;
+  color: #fff; font-size: .78rem; font-weight: 600;
+  letter-spacing: .06em; text-transform: uppercase;
+  opacity: 0; transform: translateY(6px);
+  transition: all var(--t);
+}
+.gm-item:hover .gm-caption { opacity: 1; transform: translateY(0); }
+
+/* ═══ WHY ME ═══ */
+.why-layout {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.why-left { }
+.why-left .section-sub { max-width: 420px; }
+.why-cta { margin-top: 36px; }
+.why-right {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.why-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px; padding: 26px 22px;
+  transition: all var(--t) var(--ease-out);
+}
+.why-card:hover {
+  border-color: var(--sky);
+  box-shadow: 0 0 0 4px rgba(14,165,233,.08), var(--s2);
+  transform: translateY(-4px);
+}
+.why-card.featured {
+  background: var(--ink); border-color: var(--ink);
+  grid-column: span 2;
+  display: flex; align-items: center; gap: 20px;
+}
+.why-card-icon {
+  width: 46px; height: 46px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; flex-shrink: 0;
+  background: var(--bg); color: var(--sky);
+  transition: all var(--t);
+}
+.why-card:hover .why-card-icon:not(.why-card.featured .why-card-icon) {
+  background: var(--sky); color: #fff;
+}
+.why-card.featured .why-card-icon {
+  background: rgba(14,165,233,.2); color: var(--sky-lt);
+}
+.why-card-title {
+  font-family: var(--display); font-size: .98rem;
+  font-weight: 700; color: var(--ink); margin-top: 14px; margin-bottom: 6px;
+}
+.why-card.featured .why-card-title { color: #fff; margin-top: 0; }
+.why-card-desc { font-size: .83rem; color: var(--slate); line-height: 1.6; }
+.why-card.featured .why-card-desc { color: rgba(255,255,255,.6); }
+
+/* ═══ TESTIMONIALS ═══ */
+#testimonials { background: var(--ink); }
+#testimonials .chip {
+  background: rgba(14,165,233,.15); border-color: rgba(14,165,233,.25);
+}
+#testimonials .section-heading { color: #fff; }
+#testimonials .section-sub { color: rgba(255,255,255,.5); }
+.testi-scroll { overflow: hidden; }
+#testiTrack {
+  display: flex; gap: 20px;
+  transition: transform .6s var(--ease-out);
+}
+.testi-card {
+  flex-shrink: 0;
+  min-width: calc(33.333% - 14px);
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 20px; padding: 30px 28px;
+  transition: all var(--t);
+}
+.testi-card:hover {
+  background: rgba(255,255,255,.08);
+  border-color: rgba(14,165,233,.3);
+  transform: translateY(-4px);
+}
+.testi-stars { color: #FBBF24; letter-spacing: 2px; font-size: 1rem; margin-bottom: 16px; }
+.testi-quote {
+  font-size: .95rem; color: rgba(255,255,255,.8);
+  line-height: 1.75; font-style: italic;
+  margin-bottom: 24px;
+}
+.testi-quote::before { content: '"'; color: var(--sky); font-size: 1.6rem; font-style: normal; line-height: 0; vertical-align: -0.5em; margin-right: 2px; }
+.testi-author { display: flex; align-items: center; gap: 12px; }
+.testi-avatar {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--sky), var(--aqua));
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; color: #fff; font-size: .82rem; flex-shrink: 0;
+  font-family: var(--display);
+}
+.testi-name { font-weight: 700; font-size: .88rem; color: #fff; }
+.testi-role { font-size: .74rem; color: rgba(255,255,255,.4); margin-top: 2px; }
+.testi-nav {
+  display: flex; align-items: center; gap: 16px;
+  margin-top: 36px;
+}
+.testi-dots { display: flex; gap: 6px; }
+.tdot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(255,255,255,.2); border: none; cursor: pointer;
+  transition: all var(--t);
+}
+.tdot.on { width: 24px; border-radius: 4px; background: var(--sky); }
+.testi-arrows { display: flex; gap: 8px; margin-left: auto; }
+.testi-arrow {
+  width: 40px; height: 40px; border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.12);
+  color: rgba(255,255,255,.6);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .85rem; transition: all var(--t);
+}
+.testi-arrow:hover { background: var(--sky); border-color: var(--sky); color: #fff; }
+
+/* ═══ FAQ ═══ */
+.faq-grid {
+  display: grid; grid-template-columns: 380px 1fr;
+  gap: 80px; align-items: start;
+}
+.faq-left .chip { margin-bottom: 14px; }
+.faq-left-body { font-size: .95rem; color: var(--slate); line-height: 1.75; margin-top: 16px; }
+.faq-cta { margin-top: 32px; }
+.faq-list { display: flex; flex-direction: column; gap: 10px; }
+.faq-item {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 16px; overflow: hidden;
+  transition: border-color var(--t), box-shadow var(--t);
+}
+.faq-item.open { border-color: var(--sky); box-shadow: 0 0 0 3px rgba(14,165,233,.1); }
+.faq-q {
+  width: 100%; display: flex; align-items: center;
+  justify-content: space-between; gap: 12px;
+  padding: 20px 22px; text-align: left;
+  font-size: .93rem; font-weight: 600; color: var(--ink);
+  transition: color var(--t);
+}
+.faq-q:hover { color: var(--sky); }
+.faq-item.open .faq-q { color: var(--sky); }
+.faq-q-icon {
+  width: 28px; height: 28px; border-radius: 8px;
+  background: var(--bg); color: var(--slate);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .75rem; flex-shrink: 0;
+  transition: all var(--t);
+}
+.faq-item.open .faq-q-icon { background: var(--sky); color: #fff; transform: rotate(45deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .45s var(--ease-out); }
+.faq-item.open .faq-a { max-height: 320px; }
+.faq-a-inner {
+  padding: 0 22px 20px;
+  font-size: .875rem; color: var(--slate); line-height: 1.75;
+  border-top: 1px solid var(--border); padding-top: 16px;
+  margin-top: 0;
+}
+
+/* ═══ CONTACT ═══ */
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: start;
+}
+.contact-info .chip { margin-bottom: 14px; }
+.contact-info .section-sub { margin-top: 14px; }
+.contact-details { margin-top: 32px; display: flex; flex-direction: column; gap: 12px; }
+.contact-item {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 18px; border-radius: 14px;
+  background: var(--bg); border: 1px solid var(--border);
+  transition: all var(--t); cursor: default;
+}
+a.contact-item:hover, .contact-item:hover {
+  border-color: var(--sky); background: rgba(14,165,233,.04);
+  transform: translateX(4px);
+}
+.ci-icon {
+  width: 42px; height: 42px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--ink-2), var(--sky));
+  color: #fff; display: flex; align-items: center;
+  justify-content: center; font-size: .95rem; flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(14,165,233,.25);
+}
+.ci-label { font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--slate-lt); }
+.ci-value { font-size: .9rem; font-weight: 600; color: var(--ink); margin-top: 1px; }
+.contact-wa-btn { margin-top: 20px; }
+.contact-map { margin-top: 20px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); }
+
+/* Contact Form */
+.contact-form-wrap {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 24px; padding: 40px;
+  box-shadow: var(--s3);
+}
+.form-title {
+  font-family: var(--display); font-size: 1.5rem;
+  font-weight: 700; color: var(--ink); margin-bottom: 28px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { margin-bottom: 16px; }
+.form-label {
+  display: block; font-size: .75rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--slate); margin-bottom: 7px;
+}
+.form-control {
+  width: 100%; padding: 12px 16px;
+  border: 1.5px solid var(--border); border-radius: 10px;
+  background: var(--bg); color: var(--ink);
+  font-family: var(--body); font-size: .9rem;
+  transition: all var(--t); outline: none;
+  appearance: none;
+}
+.form-control:focus { border-color: var(--sky); background: #fff; box-shadow: 0 0 0 3px rgba(14,165,233,.12); }
+.form-control.err { border-color: #F87171; }
+.form-error { font-size: .75rem; color: #EF4444; margin-top: 5px; font-weight: 500; }
+.form-control::placeholder { color: var(--slate-lt); }
+.form-success {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 16px; margin-top: 14px;
+  background: rgba(16,185,129,.08); border: 1px solid rgba(16,185,129,.3);
+  border-radius: 10px; color: var(--sage); font-weight: 600; font-size: .88rem;
+}
+
+/* ═══ FOOTER ═══ */
+footer { background: var(--ink); padding: 64px 0 0; }
+.footer-grid {
+  display: grid; grid-template-columns: 2.2fr 1fr 1fr 1.5fr;
+  gap: 48px; padding-bottom: 48px;
+}
+.footer-brand .nav-logo { color: #fff; display: flex; margin-bottom: 14px; }
+.footer-brand-desc { font-size: .86rem; color: rgba(255,255,255,.45); line-height: 1.7; max-width: 260px; }
+.footer-col h4 {
+  font-size: .72rem; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: rgba(255,255,255,.35);
+  margin-bottom: 18px;
+}
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a {
+  font-size: .86rem; color: rgba(255,255,255,.55);
+  transition: color var(--t);
+}
+.footer-col ul li a:hover { color: var(--sky-lt); }
+.footer-col p { font-size: .86rem; color: rgba(255,255,255,.55); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.footer-col p i { color: var(--sky); width: 14px; }
+.footer-col p a { color: rgba(255,255,255,.55); transition: color var(--t); }
+.footer-col p a:hover { color: var(--sky-lt); }
+.footer-socials { display: flex; gap: 8px; margin-top: 16px; }
+.footer-social {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+  color: rgba(255,255,255,.55); display: flex; align-items: center;
+  justify-content: center; font-size: .88rem; transition: all var(--t);
+}
+.footer-social:hover { background: var(--sky); border-color: var(--sky); color: #fff; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.07);
+  padding: 20px 0; display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.footer-bottom-text { font-size: .78rem; color: rgba(255,255,255,.3); }
+
+/* ═══ FLOATING BTNS ═══ */
+.float-wa {
+  position: fixed; bottom: 100px; right: 22px; z-index: 800;
+  width: 52px; height: 52px; border-radius: 50%;
+  background: #25D366; color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.35rem; box-shadow: 0 4px 20px rgba(37,211,102,.4);
+  transition: all var(--t); text-decoration: none;
+}
+.float-wa:hover { transform: scale(1.12); box-shadow: 0 6px 28px rgba(37,211,102,.5); }
+.float-call {
+  position: fixed; bottom: 38px; right: 22px; z-index: 800;
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--ink-2); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; box-shadow: 0 4px 16px rgba(30,58,95,.35);
+  transition: all var(--t); text-decoration: none;
+}
+.float-call:hover { transform: scale(1.12); background: var(--sky); }
+.float-top {
+  position: fixed; bottom: 38px; left: 22px; z-index: 800;
+  width: 46px; height: 46px; border-radius: 12px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--slate); font-size: .85rem;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--s2); transition: all var(--t);
+  opacity: 0; pointer-events: none; transform: translateY(8px);
+}
+.float-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.float-top:hover { background: var(--sky); color: #fff; border-color: var(--sky); }
+
+/* ═══ LIGHTBOX ═══ */
+#lbox {
+  position: fixed; inset: 0; z-index: 9000;
+  background: rgba(10,22,40,.95); backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px; opacity: 0; visibility: hidden; transition: all var(--t);
+}
+#lbox.open { opacity: 1; visibility: visible; }
+.lbox-inner { position: relative; max-width: 90vw; max-height: 90vh; }
+.lbox-inner img { max-height: 85vh; border-radius: 16px; object-fit: contain; display: block; }
+.lbox-close {
+  position: absolute; top: -16px; right: -16px;
+  width: 38px; height: 38px; border-radius: 10px;
+  background: #fff; color: var(--ink); font-size: 1.1rem;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; border: none; box-shadow: var(--s2);
+  transition: all var(--t);
+}
+.lbox-close:hover { background: var(--sky); color: #fff; }
+.lbox-cap { color: rgba(255,255,255,.6); font-size: .8rem; text-align: center; margin-top: 12px; letter-spacing: .06em; }
+
+/* ═══ SCROLL REVEAL ═══ */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s var(--ease-out), transform .7s var(--ease-out); }
+.reveal.show { opacity: 1; transform: none; }
+.reveal-left { opacity: 0; transform: translateX(-28px); transition: opacity .7s var(--ease-out), transform .7s var(--ease-out); }
+.reveal-left.show { opacity: 1; transform: none; }
+.reveal-right { opacity: 0; transform: translateX(28px); transition: opacity .7s var(--ease-out), transform .7s var(--ease-out); }
+.reveal-right.show { opacity: 1; transform: none; }
+.d1 { transition-delay: .08s; } .d2 { transition-delay: .16s; } .d3 { transition-delay: .24s; }
+.d4 { transition-delay: .32s; } .d5 { transition-delay: .40s; } .d6 { transition-delay: .48s; }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 1100px) {
+  .about-grid { grid-template-columns: 1fr 1fr; gap: 56px; }
+  .services-grid { grid-template-columns: repeat(2,1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: span 2; }
+}
+@media (max-width: 900px) {
+  .why-layout { grid-template-columns: 1fr; gap: 48px; }
+  .gallery-mosaic { grid-template-columns: repeat(2,1fr); grid-auto-rows: 200px; }
+  .gm-item:nth-child(1) { grid-column: 1/2; grid-row: 1/3; }
+  .gm-item:nth-child(2) { grid-column: 2/3; grid-row: 1/2; }
+  .gm-item:nth-child(3) { grid-column: 2/3; grid-row: 2/3; }
+  .gm-item:nth-child(4) { grid-column: 1/2; grid-row: 3/4; }
+  .gm-item:nth-child(5) { grid-column: 2/3; grid-row: 3/4; }
+  .gm-item:nth-child(6) { grid-column: 1/2; grid-row: 4/5; }
+  .gm-item:nth-child(7) { grid-column: 2/3; grid-row: 4/5; }
+  .gm-item:nth-child(8) { grid-column: 1/3; grid-row: 5/6; }
+  .faq-grid { grid-template-columns: 1fr; gap: 40px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-visual { display: none; }
+  .hero-content { max-width: 100%; }
+  .hero-bg-img { width: 100%; opacity: .15; }
+}
+@media (max-width: 768px) {
+  .section { padding: 72px 0; }
+  #navLinks {
+    position: fixed; top: 0; right: 0; width: min(300px,82vw);
+    height: 100vh; background: var(--bg-card);
+    flex-direction: column; align-items: flex-start;
+    padding: 88px 28px 40px; gap: 2px;
+    box-shadow: -4px 0 40px rgba(0,0,0,.15);
+    transform: translateX(100%); transition: transform var(--t) var(--ease-out); z-index: 1000;
+  }
+  #navLinks.open { transform: none; }
+  #navLinks a { color: var(--slate) !important; width: 100%; padding: 12px 14px; border-radius: 10px; font-size: .95rem; }
+  #navLinks a:hover { color: var(--sky) !important; background: rgba(14,165,233,.06) !important; }
+  .ham { display: flex; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-img-col { max-width: 400px; margin: 0 auto; }
+  .about-exp-badge { right: 0; }
+  .about-cert-badge { right: 0; }
+  .services-grid { grid-template-columns: 1fr; }
+  .testi-card { min-width: 100%; }
+  .hero-stats { display: none; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-brand { grid-column: auto; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .form-row { grid-template-columns: 1fr; }
+  .trust-inner { gap: 24px; }
+  .contact-form-wrap { padding: 28px 20px; }
+}
+@media (max-width: 480px) {
+  .hero-btns { flex-direction: column; }
+  .btn { font-size: .85rem; padding: 12px 22px; }
+  .gallery-mosaic { grid-template-columns: 1fr; }
+  .gm-item { grid-column: auto !important; grid-row: auto !important; height: 220px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════
+     LOADER
+══════════════════════════════════ -->
+<div id="loader">
+  <div class="ld-logo">Deep<span>ak</span></div>
+  <div class="ld-role">Audiologist &amp; Speech Therapist · Chandigarh</div>
+  <div class="ld-bar-wrap"><div class="ld-bar-fill"></div></div>
+</div>
+
+<!-- Nav overlay for mobile -->
+<div id="navOverlay"></div>
+
+<!-- ══════════════════════════════════
+     NAVBAR
+══════════════════════════════════ -->
+<nav id="nav">
+  <div class="wrap nav-wrap">
+    <a href="#hero" class="nav-logo">
+      <span class="nav-logo-mark"><i class="fa-solid fa-ear-listen"></i></span>
+      Deepak<span>SLP</span>
+    </a>
+    <ul id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#why">Why Me</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact" class="nav-book">Book Now</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button id="darkBtn" class="nav-icon-btn" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+      <button id="hamBtn" class="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════
+     HERO
+══════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg">
+    <img class="hero-bg-img" src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=1800&auto=format&fit=crop" alt="" aria-hidden="true"/>
+    <div class="hero-bg-overlay"></div>
+    <div class="hero-grid-lines"></div>
+    <div class="hero-glow"></div>
+  </div>
+
+  <div class="wrap" style="position:relative;z-index:2;width:100%">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-dot"></div>
+        <span class="hero-eyebrow-text">Chandigarh · BASLP Certified · Trusted Care</span>
+      </div>
+      <h1 class="hero-name">
+        Deepak
+        <span class="hero-name-accent">SLP</span>
+      </h1>
+      <p class="hero-title">Audiologist &amp; Speech-Language Pathologist</p>
+      <p class="hero-desc">Helping children &amp; adults discover their fullest voice — with evidence-based therapy and genuine compassion.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn btn-sky"><i class="fa-solid fa-calendar-check"></i> Book Appointment</a>
+        <a href="https://wa.me/919350158754" target="_blank" class="btn btn-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+        <a href="tel:+919350158754" class="btn btn-ghost" style="border-color:rgba(255,255,255,.25);color:#fff"><i class="fa-solid fa-phone"></i> Call Now</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">500<span>+</span></div>
+          <div class="hero-stat-label">Patients Helped</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">10<span>+</span></div>
+          <div class="hero-stat-label">Years Experience</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">12<span>+</span></div>
+          <div class="hero-stat-label">Specialities</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">100<span>%</span></div>
+          <div class="hero-stat-label">Patient Focused</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right side image -->
+  <div class="hero-visual">
+    <div class="hero-img-frame">
+      <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=900&auto=format&fit=crop" alt="Hearing care consultation" loading="eager"/>
+      <div class="hero-img-overlay"></div>
+      <div class="hero-float-card">
+        <div class="hfc-icon"><i class="fa-solid fa-ear-listen"></i></div>
+        <div>
+          <div class="hfc-label">Next Available Slot</div>
+          <div class="hfc-value">Today · Call to Book</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="#about" class="hero-scroll" aria-label="Scroll down">
+    <div class="hero-scroll-line"></div>
+    <span class="hero-scroll-text">Scroll</span>
+  </a>
+</section>
+
+<!-- ══════════════════════════════════
+     TRUST BAR
+══════════════════════════════════ -->
+<div class="trust-bar">
+  <div class="wrap trust-inner">
+    <div class="trust-item"><i class="fa-solid fa-graduation-cap"></i> BASLP Certified Clinician</div>
+    <div class="trust-item"><i class="fa-solid fa-house-medical"></i> Home Visits Available</div>
+    <div class="trust-item"><i class="fa-solid fa-stethoscope"></i> Evidence-Based Therapy</div>
+    <div class="trust-item"><i class="fa-solid fa-child"></i> Children &amp; Adults</div>
+    <div class="trust-item"><i class="fa-brands fa-whatsapp"></i> WhatsApp Consultation</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     ABOUT
+══════════════════════════════════ -->
+<section id="about" class="section section-alt">
+  <div class="wrap">
+    <div class="about-grid">
+      <!-- Image Column -->
+      <div class="about-img-col reveal-left">
+        <div class="about-img-stripe"></div>
+        <div class="about-img-main">
+          <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=700&auto=format&fit=crop" alt="Deepak – Audiologist & SLP" loading="lazy"/>
+        </div>
+        <div class="about-cert-badge">
+          <div class="about-cert-icon"><i class="fa-solid fa-certificate"></i></div>
+          <div class="about-cert-text">
+            <div class="t1">BASLP Certified</div>
+            <div class="t2">Govt. Recognised Qualification</div>
+          </div>
+        </div>
+        <div class="about-exp-badge">
+          <div class="about-exp-num">10+</div>
+          <div class="about-exp-label">Years of Practice</div>
+        </div>
+      </div>
+      <!-- Text Column -->
+      <div class="about-text reveal-right">
+        <span class="chip"><i class="fa-solid fa-user-doctor"></i> About Me</span>
+        <h2 class="section-heading">A Clinician Who Truly Listens</h2>
+        <p class="about-lead">
+          I believe <strong>every voice deserves to be heard</strong> — and every child deserves the chance to find theirs.
+        </p>
+        <p class="about-body">
+          I am a BASLP (Bachelor of Audiology &amp; Speech-Language Pathology) trained clinician with extensive experience in speech and hearing rehabilitation across Chandigarh and surrounding regions. My practice is grounded in the latest evidence-based protocols, delivered with warmth and genuine patient focus.
+        </p>
+        <p class="about-body">
+          From diagnosing hearing loss in newborns to helping stroke survivors rediscover their words, I offer comprehensive audiological and speech-language services tailored for every stage of life.
+        </p>
+        <div class="about-pills">
+          <span class="about-pill"><i class="fa-solid fa-check"></i> BASLP Qualified</span>
+          <span class="about-pill"><i class="fa-solid fa-check"></i> Child &amp; Adult Specialist</span>
+          <span class="about-pill"><i class="fa-solid fa-check"></i> Home Visits</span>
+          <span class="about-pill"><i class="fa-solid fa-check"></i> Evidence-Based</span>
+          <span class="about-pill"><i class="fa-solid fa-check"></i> Compassionate Care</span>
+          <span class="about-pill"><i class="fa-solid fa-check"></i> Modern Equipment</span>
+        </div>
+        <div class="about-cta-row">
+          <a href="#contact" class="btn btn-primary">Book a Consultation</a>
+          <a href="tel:+919350158754" class="about-contact-link"><i class="fa-solid fa-phone"></i> +91 9350158754</a>
+          <a href="mailto:drajput.pro@gmail.com" class="about-contact-link"><i class="fa-solid fa-envelope"></i> Email</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     SERVICES
+══════════════════════════════════ -->
+<section id="services" class="section">
+  <div class="wrap">
+    <div class="section-header center reveal">
+      <span class="chip"><i class="fa-solid fa-list-check"></i> What I Offer</span>
+      <h2 class="section-heading">Comprehensive Clinical Services</h2>
+      <p class="section-sub">From early childhood speech delays to adult hearing rehabilitation — precise, personalised care at every stage.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal d1" style="--ic-bg:#EFF6FF;--ic:var(--sky)">
+        <div class="sc-icon-wrap" style="background:#EFF6FF;color:var(--sky)"><i class="fa-solid fa-child-reaching"></i></div>
+        <h3 class="sc-title">Speech Therapy — Children</h3>
+        <p class="sc-desc">Comprehensive assessment and therapy for articulation errors, language delays, and communication disorders in children.</p>
+        <a href="#contact" class="sc-link">Enquire <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card reveal d2" style="--ic-bg:#F5F3FF;--ic:#8B5CF6">
+        <div class="sc-icon-wrap" style="background:#F5F3FF;color:#8B5CF6"><i class="fa-solid fa-baby"></i></div>
+        <h3 class="sc-title">Speech Delay Therapy</h3>
+        <p class="sc-desc">Targeted early intervention for toddlers and preschoolers with expressive or receptive language delays.</p>
+        <a href="#contact" class="sc-link">Enquire <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card reveal d3" style="--ic-bg:#F0FDFA;--ic:var(--aqua)">
+        <div class="sc-icon-wrap" style="background:#F0FDFA;color:var(--aqua)"><i class="fa-solid fa-person"></i></div>
+        <h3 class="sc-title">Adult Speech Therapy</h3>
+        <p class="sc-desc">Therapy for adults with voice problems, stuttering, articulation issues, or neurological speech disorders.</p>
+        <a href="#contact" class="sc-link">Enquire <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card reveal d1">
+        <div class="sc-icon-wrap" style="background:#FEF2F2;color:#EF4444"><i class="fa-solid fa-brain"></i></div>
+        <h3 class="sc-title">Stroke Rehabilitation</h3>
+        <p class="sc-desc">Specialized post-stroke communication therapy including swallowing rehabilitation and cognitive-communication support.</p>
+        <a href="#contact" class="sc-link">Enquire <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card reveal d2">
+        <div class="sc-icon-wrap" style="background:#FFFBEB;color:#F59E0B"><i class="fa-solid fa-comments"></i></div>
+        <h3 class="sc-title">Aphasia Therapy</h3>
+        <p class="sc-desc">Structured language rehabilitation focusing on speaking, listening, reading, and writing for aphasia patients.</p>
+        <a href="#contact" class="sc-link">Enquire <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card reveal d3">
+        <div class="sc-icon-wrap" style="background:#F0FDF4;color:var(--sage)"><i class="fa-solid fa-wave-square"></i></div>
+        <h3 class="sc-title">Stammering / Fluency Therapy</h3>
+        <p class="sc-desc">Evidence-based fluency programs to help patients achieve natural, confident speech in daily life.</p>
+        <a href="#contact" class="sc-link">Enquire <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card reveal d1">
+        <div class="sc-icon-wrap" style="background:#FDF2F8;color:#EC4899"><i class="fa-solid fa-microphone"></i></div>
+        <h3 class="sc-title">Voice Therapy</h3>
+        <p class="sc-desc">Treatment for vocal nodules, hoarseness, vocal fatigue, and other voice disorders affecting quality and pitch.</p>
+        <a href="#contact" class="sc-link">Enquire <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card reveal d2">
+        <div class="sc-icon-wrap" style="background:#EFF6FF;color:var(--sky)"><i class="fa-solid fa-ear-listen"></i></div>
+        <h3 class="sc-title">Hearing Assessment</h3>
+        <p class="sc-desc">Full audiological evaluation including pure-tone audiometry, speech audiometry, and tympanometry.</p>
+        <a href="#contact" class="sc-link">Enquire <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card reveal d3">
+        <div class="sc-icon-wrap" style="background:#EEF2FF;color:#6366F1"><i class="fa-solid fa-headphones"></i></div>
+        <h3 class="sc-title">Hearing Aid Consultation &amp; Fitting</h3>
+        <p class="sc-desc">Expert selection, precision fitting, and follow-up for all hearing aid types — BTE, CIC, ITE, and RIC.</p>
+        <a href="#contact" class="sc-link">Enquire <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card reveal d1">
+        <div class="sc-icon-wrap" style="background:#FFF7ED;color:#F97316"><i class="fa-solid fa-volume-xmark"></i></div>
+        <h3 class="sc-title">Tinnitus Management</h3>
+        <p class="sc-desc">Counselling and sound therapy to help patients manage tinnitus and reduce its impact on quality of life.</p>
+        <a href="#contact" class="sc-link">Enquire <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card reveal d2">
+        <div class="sc-icon-wrap" style="background:#F7FEE7;color:#65A30D"><i class="fa-solid fa-house-medical"></i></div>
+        <h3 class="sc-title">Home Visit Therapy</h3>
+        <p class="sc-desc">Professional speech and hearing therapy at your doorstep — ideal for elderly patients and mobility-limited individuals.</p>
+        <a href="#contact" class="sc-link">Enquire <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card reveal d3" style="background:var(--ink);border-color:var(--ink)">
+        <div class="sc-icon-wrap" style="background:rgba(14,165,233,.15);color:var(--sky-lt)"><i class="fa-solid fa-circle-question"></i></div>
+        <h3 class="sc-title" style="color:#fff">Not Sure Where to Start?</h3>
+        <p class="sc-desc" style="color:rgba(255,255,255,.55)">Book a free initial consultation and I'll guide you to the right treatment pathway.</p>
+        <a href="#contact" class="btn btn-sky" style="margin-top:16px;font-size:.8rem;padding:10px 18px">Book Free Consult <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     GALLERY
+══════════════════════════════════ -->
+<section id="gallery" class="section section-alt">
+  <div class="wrap">
+    <div class="section-header reveal">
+      <span class="chip"><i class="fa-solid fa-images"></i> Gallery</span>
+      <h2 class="section-heading">A Glimpse Into the Practice</h2>
+      <p class="section-sub">Professional, welcoming, and equipped with modern diagnostic tools.</p>
+    </div>
+    <div class="gallery-mosaic">
+      <div class="gm-item reveal">
+        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=900&auto=format&fit=crop" alt="Audiometry Testing" loading="lazy"/>
+        <div class="gm-caption">Audiometry Testing</div>
+      </div>
+      <div class="gm-item reveal d1">
+        <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=600&auto=format&fit=crop" alt="Hearing Aid Fitting" loading="lazy"/>
+        <div class="gm-caption">Hearing Aid Fitting</div>
+      </div>
+      <div class="gm-item reveal d2">
+        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=600&auto=format&fit=crop" alt="Child Speech Therapy" loading="lazy"/>
+        <div class="gm-caption">Child Speech Therapy</div>
+      </div>
+      <div class="gm-item reveal d1">
+        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&auto=format&fit=crop" alt="Patient Consultation" loading="lazy"/>
+        <div class="gm-caption">Patient Consultation</div>
+      </div>
+      <div class="gm-item reveal d2">
+        <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&auto=format&fit=crop" alt="Elderly Hearing Care" loading="lazy"/>
+        <div class="gm-caption">Elderly Hearing Support</div>
+      </div>
+      <div class="gm-item reveal d1">
+        <img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=600&auto=format&fit=crop" alt="Adult Therapy" loading="lazy"/>
+        <div class="gm-caption">Adult Speech Therapy</div>
+      </div>
+      <div class="gm-item reveal d2">
+        <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=600&auto=format&fit=crop" alt="Voice Therapy" loading="lazy"/>
+        <div class="gm-caption">Voice Therapy</div>
+      </div>
+      <div class="gm-item reveal d3">
+        <img src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=600&auto=format&fit=crop" alt="Stroke Rehabilitation" loading="lazy"/>
+        <div class="gm-caption">Stroke Rehabilitation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     WHY CHOOSE ME
+══════════════════════════════════ -->
+<section id="why" class="section">
+  <div class="wrap">
+    <div class="why-layout">
+      <div class="why-left reveal-left">
+        <span class="chip"><i class="fa-solid fa-star"></i> Why Choose Me</span>
+        <h2 class="section-heading">Care Built on Trust &amp; Expertise</h2>
+        <p class="section-sub">Every treatment decision I make is guided by evidence, ethics, and a genuine desire to improve your quality of life.</p>
+        <div class="why-cta">
+          <a href="#contact" class="btn btn-primary">Get Started Today</a>
+        </div>
+      </div>
+      <div class="why-right reveal-right">
+        <div class="why-card featured">
+          <div class="why-card-icon"><i class="fa-solid fa-shield-heart"></i></div>
+          <div>
+            <div class="why-card-title">BASLP-Certified, Experienced Clinician</div>
+            <div class="why-card-desc">Formally qualified with over a decade of clinical experience across speech, language, and audiology disciplines. Your care is always in expert hands.</div>
+          </div>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon"><i class="fa-solid fa-clipboard-list"></i></div>
+          <div class="why-card-title">Personalised Plans</div>
+          <div class="why-card-desc">Customised therapy programmes built around your specific needs, goals, and lifestyle — never one-size-fits-all.</div>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon"><i class="fa-solid fa-flask"></i></div>
+          <div class="why-card-title">Evidence-Based Practice</div>
+          <div class="why-card-desc">All treatments follow internationally validated clinical guidelines and research-backed therapeutic approaches.</div>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon"><i class="fa-solid fa-house-medical-circle-check"></i></div>
+          <div class="why-card-title">Home Visits</div>
+          <div class="why-card-desc">Professional-grade therapy at your home, ideal for elderly patients or anyone with mobility limitations.</div>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon"><i class="fa-solid fa-microscope"></i></div>
+          <div class="why-card-title">Modern Diagnostics</div>
+          <div class="why-card-desc">Advanced audiometric and speech assessment tools ensure accurate, reliable diagnoses every time.</div>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+          <div class="why-card-title">Transparent &amp; Ethical</div>
+          <div class="why-card-desc">Honest recommendations, clear fees, and zero unnecessary upselling — your health always comes first.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     TESTIMONIALS
+══════════════════════════════════ -->
+<section id="testimonials" class="section">
+  <div class="wrap">
+    <div class="section-header center reveal">
+      <span class="chip"><i class="fa-solid fa-quote-left"></i> Patient Reviews</span>
+      <h2 class="section-heading">Words from Those Who've Healed</h2>
+      <p class="section-sub">Real stories from patients and families whose lives have been changed through dedicated therapy.</p>
+    </div>
+    <div class="testi-scroll reveal">
+      <div id="testiTrack">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">My 4-year-old son could barely say a full sentence. After just 3 months with Deepak, he's talking non-stop. The progress has been incredible — so grateful for such patient, dedicated care.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">PK</div>
+            <div><div class="testi-name">Priya Kapoor</div><div class="testi-role">Mother — Speech Delay Patient</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">After my stroke, I struggled to find words and form sentences. Deepak's systematic aphasia therapy gave me my voice back. He is not just a clinician — he is a true healer with extraordinary empathy.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">RS</div>
+            <div><div class="testi-name">Rajesh Sharma</div><div class="testi-role">Stroke Rehabilitation Patient</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">I had suffered from tinnitus for years. Deepak explained everything thoroughly and started sound therapy. The ringing is now much more manageable. Professional, knowledgeable, and genuinely caring.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">AM</div>
+            <div><div class="testi-name">Anita Mehta</div><div class="testi-role">Tinnitus Management Patient</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">I was hesitant about getting a hearing aid at 68, but Deepak made the whole process easy. The fitting was perfect and my quality of life has changed completely. Highly recommend to everyone.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">SV</div>
+            <div><div class="testi-name">Surinder Verma</div><div class="testi-role">Hearing Aid Fitting Patient</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">My stammering had been affecting my career for 15 years. Deepak's fluency therapy gave me confidence I never thought possible. Within 6 months I can speak fluently in meetings. Truly life-changing!</p>
+          <div class="testi-author">
+            <div class="testi-avatar">VN</div>
+            <div><div class="testi-name">Vikram Nanda</div><div class="testi-role">Stammering Therapy Patient</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-nav reveal">
+      <div class="testi-dots" id="testiDots"></div>
+      <div class="testi-arrows">
+        <button class="testi-arrow" id="tPrev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="testi-arrow" id="tNext" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     FAQ
+══════════════════════════════════ -->
+<section id="faq" class="section section-alt">
+  <div class="wrap">
+    <div class="faq-grid">
+      <div class="faq-left reveal-left">
+        <span class="chip"><i class="fa-solid fa-circle-question"></i> FAQ</span>
+        <h2 class="section-heading">Common Questions, Clear Answers</h2>
+        <p class="faq-left-body">Have more questions? I'm always available for a quick chat before you book. Reach out via WhatsApp or phone — there's no obligation.</p>
+        <div class="faq-cta">
+          <a href="https://wa.me/919350158754" target="_blank" class="btn btn-wa"><i class="fa-brands fa-whatsapp"></i> Ask on WhatsApp</a>
+        </div>
+      </div>
+      <div class="faq-list reveal-right">
+        <div class="faq-item">
+          <button class="faq-q">How many sessions will I need?<span class="faq-q-icon"><i class="fa-solid fa-plus"></i></span></button>
+          <div class="faq-a"><div class="faq-a-inner">The number of sessions depends on the nature and severity of your condition. After an initial assessment I'll provide a clear therapy roadmap. Most children with speech delay see meaningful progress within 8–12 sessions; adult and neurological cases may require a longer course.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do you provide home visits?<span class="faq-q-icon"><i class="fa-solid fa-plus"></i></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. Home visits are available across Chandigarh and nearby areas. This is particularly beneficial for elderly patients, stroke survivors with mobility challenges, or families who simply prefer the comfort of home-based care. Call or WhatsApp to arrange.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can adults recover speech after a stroke?<span class="faq-q-icon"><i class="fa-solid fa-plus"></i></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Absolutely. The brain's neuroplasticity allows for significant recovery with consistent, structured therapy — even years after the event. Early intervention yields the best outcomes, but it is never too late to begin. I have helped many patients regain functional communication well after their stroke.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">At what age should I be concerned about speech delay?<span class="faq-q-icon"><i class="fa-solid fa-plus"></i></span></button>
+          <div class="faq-a"><div class="faq-a-inner">If your child is not saying single words by 12–15 months, two-word phrases by 24 months, or shows difficulty being understood by others at age 3, I would encourage an assessment. Early intervention is the most powerful predictor of long-term outcome — please don't wait.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do hearing aids really make a difference?<span class="faq-q-icon"><i class="fa-solid fa-plus"></i></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Modern digital hearing aids are extraordinary devices that filter noise, enhance speech clarity, and adapt to different environments in real time. With proper fitting and follow-up care, most patients notice a transformative improvement in daily communication, social confidence, and overall wellbeing.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     CONTACT
+══════════════════════════════════ -->
+<section id="contact" class="section">
+  <div class="wrap">
+    <div class="contact-grid">
+      <!-- Info -->
+      <div class="contact-info reveal-left">
+        <span class="chip"><i class="fa-solid fa-calendar-check"></i> Book Appointment</span>
+        <h2 class="section-heading">Ready to Take the First Step?</h2>
+        <p class="section-sub">Reach out today. I'll respond promptly and we'll find the right time for your consultation.</p>
+        <div class="contact-details">
+          <a href="tel:+919350158754" class="contact-item">
+            <div class="ci-icon"><i class="fa-solid fa-phone"></i></div>
+            <div><div class="ci-label">Phone / WhatsApp</div><div class="ci-value">+91 9350158754</div></div>
+          </a>
+          <a href="mailto:drajput.pro@gmail.com" class="contact-item">
+            <div class="ci-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div><div class="ci-label">Email</div><div class="ci-value">drajput.pro@gmail.com</div></div>
+          </a>
+          <div class="contact-item">
+            <div class="ci-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div><div class="ci-label">Location</div><div class="ci-value">Chandigarh, India</div></div>
+          </div>
+        </div>
+        <div class="contact-wa-btn">
+          <a href="https://wa.me/919350158754" target="_blank" class="btn btn-wa btn-full"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+        </div>
+        <div class="contact-map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d109744.47856547447!2d76.6339268!3d30.7332808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fed0be66ec96b%3A0xa5ff67f9527319fe!2sChandigarh!5e0!3m2!1sen!2sin!4v1700000000000" width="100%" height="200" style="border:0;display:block" allowfullscreen="" loading="lazy" title="Chandigarh Map"></iframe>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="reveal-right">
+        <div class="contact-form-wrap">
+          <form id="contactForm" novalidate>
+            <div class="form-title">Send a Message</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="f_name">Full Name *</label>
+                <input type="text" id="f_name" class="form-control" placeholder="Your full name" required/>
+                <span class="form-error" id="e_name"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="f_phone">Phone *</label>
+                <input type="tel" id="f_phone" class="form-control" placeholder="+91 XXXXX XXXXX" required/>
+                <span class="form-error" id="e_phone"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f_email">Email Address</label>
+              <input type="email" id="f_email" class="form-control" placeholder="your@email.com"/>
+              <span class="form-error" id="e_email"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f_service">Service Required *</label>
+              <select id="f_service" class="form-control" required>
+                <option value="">Select a service…</option>
+                <option>Speech Therapy for Children</option>
+                <option>Speech Delay Therapy</option>
+                <option>Adult Speech Therapy</option>
+                <option>Stroke Rehabilitation</option>
+                <option>Aphasia Therapy</option>
+                <option>Stammering / Fluency Therapy</option>
+                <option>Voice Therapy</option>
+                <option>Hearing Assessment</option>
+                <option>Hearing Aid Consultation</option>
+                <option>Hearing Aid Fitting</option>
+                <option>Tinnitus Management</option>
+                <option>Home Visit Therapy</option>
+                <option>Other / General Enquiry</option>
+              </select>
+              <span class="form-error" id="e_service"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f_msg">Message</label>
+              <textarea id="f_msg" class="form-control" rows="4" placeholder="Briefly describe your concern or question…"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+              <i class="fa-solid fa-paper-plane"></i> Send Message
+            </button>
+            <div id="formOk" class="form-success" style="display:none">
+              <i class="fa-solid fa-circle-check"></i> Thank you! We'll be in touch with you shortly.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     FOOTER
+══════════════════════════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#hero" class="nav-logo">
+          <span class="nav-logo-mark"><i class="fa-solid fa-ear-listen"></i></span>
+          Deepak<span style="color:var(--sky)">SLP</span>
+        </a>
+        <p class="footer-brand-desc">Helping children &amp; adults communicate better through expert speech and hearing care in Chandigarh, India.</p>
+        <div class="footer-socials" style="margin-top:18px">
+          <a href="#" class="footer-social" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="footer-social" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://wa.me/919350158754" class="footer-social" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#" class="footer-social" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Me</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Speech Therapy</a></li>
+          <li><a href="#services">Hearing Assessment</a></li>
+          <li><a href="#services">Hearing Aid Fitting</a></li>
+          <li><a href="#services">Stroke Rehabilitation</a></li>
+          <li><a href="#services">Tinnitus Management</a></li>
+          <li><a href="#services">Home Visits</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p><i class="fa-solid fa-phone"></i><a href="tel:+919350158754">+91 9350158754</a></p>
+        <p><i class="fa-solid fa-envelope"></i><a href="mailto:drajput.pro@gmail.com">drajput.pro@gmail.com</a></p>
+        <p><i class="fa-solid fa-location-dot"></i> Chandigarh, India</p>
+        <p><i class="fa-brands fa-whatsapp"></i><a href="https://wa.me/919350158754">WhatsApp Chat</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-bottom-text">© <span id="yr"></span> Deepak — Audiologist &amp; Speech-Language Pathologist, Chandigarh. All rights reserved.</span>
+      <span class="footer-bottom-text">BASLP Certified · Chandigarh, India</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════
+     FLOATING BUTTONS
+══════════════════════════════════ -->
+<a href="https://wa.me/919350158754" target="_blank" class="float-wa" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+<a href="tel:+919350158754" class="float-call" aria-label="Call"><i class="fa-solid fa-phone"></i></a>
+<button id="topBtn" class="float-top" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+<!-- ══════════════════════════════════
+     LIGHTBOX
+══════════════════════════════════ -->
+<div id="lbox">
+  <div class="lbox-inner">
+    <button class="lbox-close" id="lbClose"><i class="fa-solid fa-xmark"></i></button>
+    <img src="" alt="" id="lbImg"/>
+    <p class="lbox-cap" id="lbCap"></p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════ -->
+<script>
+"use strict";
+
+/* ── LOADER ── */
+(function(){
+  var ld = document.getElementById('loader');
+  document.body.style.overflow = 'hidden';
+  function hide(){ ld.classList.add('out'); document.body.style.overflow = ''; }
+  var t = setTimeout(hide, 2700);
+  window.addEventListener('load', function(){ clearTimeout(t); setTimeout(hide, 250); });
+})();
+
+/* ── UTIL ── */
+function deb(fn, ms){ var t; return function(){ clearTimeout(t); t = setTimeout(fn, ms||80); }; }
+function qs(s){ return document.querySelector(s); }
+function qsa(s){ return document.querySelectorAll(s); }
+
+/* ── DARK MODE (kept minimal — site has its own strong light palette) ── */
+(function(){
+  var btn = document.getElementById('darkBtn');
+  var html = document.documentElement;
+  // Store preference but don't alter core palette — accent changes only
+  var saved = localStorage.getItem('dmode');
+  if(saved === 'dark'){ html.setAttribute('data-dark','1'); btn.innerHTML = '<i class="fa-solid fa-sun"></i>'; }
+  btn.addEventListener('click', function(){
+    var on = html.getAttribute('data-dark') === '1';
+    if(on){ html.removeAttribute('data-dark'); btn.innerHTML = '<i class="fa-solid fa-moon"></i>'; localStorage.setItem('dmode','light'); }
+    else { html.setAttribute('data-dark','1'); btn.innerHTML = '<i class="fa-solid fa-sun"></i>'; localStorage.setItem('dmode','dark'); }
+  });
+})();
+
+/* ── NAVBAR ── */
+(function(){
+  var nav = qs('#nav');
+  function sc(){ nav.classList.toggle('scrolled', window.scrollY > 60); }
+  window.addEventListener('scroll', deb(sc, 12)); sc();
+})();
+
+/* ── HAMBURGER ── */
+(function(){
+  var ham = qs('#hamBtn'), links = qs('#navLinks'), ov = qs('#navOverlay');
+  function close_(){ links.classList.remove('open'); ham.classList.remove('open'); ov.classList.remove('show'); }
+  ham.addEventListener('click', function(){
+    var o = links.classList.toggle('open');
+    ham.classList.toggle('open', o); ov.classList.toggle('show', o);
+  });
+  qsa('#navLinks a').forEach(function(a){ a.addEventListener('click', close_); });
+  ov.addEventListener('click', close_);
+})();
+
+/* ── SMOOTH SCROLL ── */
+qsa('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click', function(e){
+    var t = qs(a.getAttribute('href'));
+    if(!t) return; e.preventDefault();
+    window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 76, behavior: 'smooth' });
+  });
+});
+
+/* ── SCROLL REVEAL ── */
+(function(){
+  var els = qsa('.reveal, .reveal-left, .reveal-right');
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('show'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function(el){ obs.observe(el); });
+})();
+
+/* ── FAQ ACCORDION ── */
+qsa('.faq-item').forEach(function(item){
+  qs('.faq-q', item).addEventListener('click', function(){
+    var isOpen = item.classList.contains('open');
+    qsa('.faq-item').forEach(function(i){ i.classList.remove('open'); });
+    if(!isOpen) item.classList.add('open');
+  });
+});
+
+/* ── TESTIMONIALS CAROUSEL ── */
+(function(){
+  var track = qs('#testiTrack'), dotsEl = qs('#testiDots');
+  var cards = qsa('.testi-card'), N = cards.length;
+  var cur = 0, timer = null;
+  function pv(){ return window.innerWidth <= 768 ? 1 : window.innerWidth <= 1100 ? 2 : 3; }
+  function buildDots(){
+    dotsEl.innerHTML = '';
+    var pages = N - pv() + 1;
+    for(var i = 0; i < pages; i++){
+      (function(i){
+        var d = document.createElement('button');
+        d.className = 'tdot' + (i===cur?' on':''); d.setAttribute('aria-label','Page '+(i+1));
+        d.addEventListener('click', function(){ goTo(i); startAuto(); });
+        dotsEl.appendChild(d);
+      })(i);
+    }
+  }
+  function goTo(i){
+    var pages = N - pv() + 1; cur = Math.max(0, Math.min(i, pages-1));
+    var w = cards[0].getBoundingClientRect().width + 20;
+    track.style.transform = 'translateX(-' + (cur * w) + 'px)';
+    qsa('.tdot').forEach(function(d,j){ d.classList.toggle('on', j===cur); });
+  }
+  function next(){ goTo((cur+1) % (N - pv() + 1)); }
+  function prev(){ goTo(cur - 1 < 0 ? N - pv() : cur - 1); }
+  function startAuto(){ clearInterval(timer); timer = setInterval(next, 4800); }
+  function stopAuto(){ clearInterval(timer); }
+
+  qs('#tNext') && qs('#tNext').addEventListener('click', function(){ next(); startAuto(); });
+  qs('#tPrev') && qs('#tPrev').addEventListener('click', function(){ prev(); startAuto(); });
+
+  // Touch swipe
+  var tx = 0;
+  track.addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; stopAuto(); }, {passive:true});
+  track.addEventListener('touchend', function(e){ var d=tx-e.changedTouches[0].clientX; if(Math.abs(d)>48){d>0?next():prev();} startAuto(); });
+  track.addEventListener('mouseenter', stopAuto); track.addEventListener('mouseleave', startAuto);
+
+  function init(){ buildDots(); goTo(0); startAuto(); }
+  init(); window.addEventListener('resize', deb(init, 200));
+})();
+
+/* ── CONTACT FORM ── */
+(function(){
+  var form = qs('#contactForm'), ok = qs('#formOk'), btn = qs('#submitBtn');
+  if(!form) return;
+  function g(id){ return document.getElementById(id); }
+  function setE(fid, eid, msg){ g(fid).classList.add('err'); if(g(eid)) g(eid).textContent = msg; }
+  function clE(fid, eid){ g(fid).classList.remove('err'); if(g(eid)) g(eid).textContent = ''; }
+  function validate(){
+    var ok=true, n=g('f_name').value.trim(), p=g('f_phone').value.trim().replace(/\s/g,''),
+        e=g('f_email').value.trim(), s=g('f_service').value;
+    if(!n||n.length<2){ setE('f_name','e_name','Please enter your full name.'); ok=false; } else clE('f_name','e_name');
+    if(!p||!/^[+]?[0-9]{10,15}$/.test(p)){ setE('f_phone','e_phone','Please enter a valid phone number.'); ok=false; } else clE('f_phone','e_phone');
+    if(e&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){ setE('f_email','e_email','Please enter a valid email.'); ok=false; } else clE('f_email','e_email');
+    if(!s){ setE('f_service','e_service','Please select a service.'); ok=false; } else clE('f_service','e_service');
+    return ok;
+  }
+  form.addEventListener('submit', function(e){
+    e.preventDefault(); if(!validate()) return;
+    btn.disabled = true; btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending…';
+    setTimeout(function(){
+      ok.style.display = 'flex'; form.reset();
+      btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
+      setTimeout(function(){ ok.style.display = 'none'; }, 6000);
+    }, 1500);
+  });
+})();
+
+/* ── BACK TO TOP ── */
+(function(){
+  var btn = qs('#topBtn');
+  window.addEventListener('scroll', deb(function(){ btn.classList.toggle('show', window.scrollY > 380); }, 20));
+  btn.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+})();
+
+/* ── GALLERY LIGHTBOX ── */
+(function(){
+  var lb=qs('#lbox'), img=qs('#lbImg'), cap=qs('#lbCap');
+  function open(src,c){ img.src=src; cap.textContent=c||''; lb.classList.add('open'); document.body.style.overflow='hidden'; }
+  function close(){ lb.classList.remove('open'); document.body.style.overflow=''; img.src=''; }
+  qsa('.gm-item').forEach(function(item){
+    item.addEventListener('click', function(){
+      var i=qs('img',item), c=qs('.gm-caption',item);
+      if(i) open(i.src, c?c.textContent:'');
+    });
+  });
+  qs('#lbClose').addEventListener('click', close);
+  lb.addEventListener('click', function(e){ if(e.target===lb) close(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+
+/* ── FOOTER YEAR ── */
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ── COUNTER ANIMATION on hero stats ── */
+(function(){
+  var stats = qsa('.hero-stat-num');
+  var observed = false;
+  var obs = new IntersectionObserver(function(entries){
+    if(observed) return;
+    entries.forEach(function(e){
+      if(e.isIntersecting){ observed=true; animateCounters(); obs.disconnect(); }
+    });
+  }, {threshold:.5});
+  if(stats.length) obs.observe(stats[0].parentElement.parentElement);
+  function animateCounters(){
+    var targets = [{el:stats[0],end:500,suffix:'+'},{el:stats[1],end:10,suffix:'+'},{el:stats[2],end:12,suffix:'+'},{el:stats[3],end:100,suffix:'%'}];
+    targets.forEach(function(t){
+      var start=0, dur=1400, step=16, inc=t.end/(dur/step);
+      var iv=setInterval(function(){
+        start+=inc;
+        if(start>=t.end){ start=t.end; clearInterval(iv); }
+        var sp=t.el.querySelector('span');
+        t.el.childNodes[0].textContent=Math.round(start);
+        if(sp) sp.textContent=t.suffix;
+      }, step);
+    });
+  }
+})();
+</script>
+</body>
+</html>
